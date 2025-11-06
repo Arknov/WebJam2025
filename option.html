@@ -3,9 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Option</title>
+   <audio id="bgAudio" src="your-audio.mp3" controls autoplay loop></audio>
 </head>
 <body>
 
+  <h2>Options</h2>
+  <div class="option-box">
+   <br/>
+    <label for="volumeControl">Volume:</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+  </div>
+  <script>
+    
+    const audio = document.getElementById('bgAudio');
+    const volumeSlider = document.getElementById('volumeControl');
+    
+    const savedVolume = localStorage.getItem('siteVolume');
+    if (savedVolume !== null) {
+        audio.volume = savedVolume;
+        volumeSlider.value = savedVolume;
+      }
+      else {
+            audio.volume = 1;
+            volumeSlider.value = 1;
+          }
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+        localStorage.setItem('siteVolume', this.value);
+      }
+    );
+  </script>
+  <!--add app.jsx to allow -->
 
 </body>
 </html>
