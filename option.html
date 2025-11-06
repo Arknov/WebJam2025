@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Option</title>
-   <audio id="bgAudio" src="your-audio.mp3" controls autoplay loop></audio>
+   <audio id="bgAudio" src="your-audio.mp3" autoplay loop></audio>
 </head>
 <body>
 
@@ -33,7 +33,20 @@
       }
     );
   </script>
-  <!--add app.jsx to allow -->
+  <!--add something allow multiple pages share volummn change other pages need to include  
+<audio id="bgAudio" src="your-audio.mp3" autoplay loop></audio>
+<script>
+const audio = document.getElementById('bgAudio');
+const savedVolume = localStorage.getItem('siteVolume');
+if (savedVolume !== null) {
+  audio.volume = savedVolume;
+} else {
+  audio.volume = 1;
+}
+</script>
+  
+but if you have some other fancy thing that is eaiser to do you can use other method
+  -->
 
 </body>
 </html>
