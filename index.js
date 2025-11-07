@@ -1,6 +1,4 @@
-// -------------------------
 // UCI Random Coordinate Logic
-// -------------------------
 window.UCI_BOUNDS = { north: 33.6535, south: 33.6395, west: -117.8515, east: -117.8335 };
 
 window.getRandomCoord = function() {
@@ -9,9 +7,8 @@ window.getRandomCoord = function() {
   return { lat, lng };
 };
 
-// -------------------------
 // Distance & Scoring
-// -------------------------
+
 window.distanceMeters = function(lat1, lon1, lat2, lon2) {
   const R = 6371000;
   const toRad = x => x * Math.PI / 180;
@@ -25,14 +22,11 @@ window.getScore = function(distance) {
   return Math.round(1000 * Math.exp(-distance / 150));
 };
 
-// -------------------------
 // Game State
-// -------------------------
 window.round = 1;
 window.maxRounds = 3;
 window.totalScore = 0;
 
-// Target coordinates
 window.setNewTarget = function() {
   window.targetCoord = window.getRandomCoord();
   window.targetLat = window.targetCoord.lat;
@@ -40,9 +34,7 @@ window.setNewTarget = function() {
 };
 window.setNewTarget();
 
-// -------------------------
 // Leaflet Map Initialization
-// -------------------------
 const lat = 33.645805, lng = -117.842722;
 const map = L.map('map').setView([lat, lng], 16);
 
@@ -51,40 +43,22 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap'
 }).addTo(map);
 
-// Marker logic
+const confirmBtn = document.getElementById("confirm-point-btn");
 window.currentMarker = null;
-window.confirmButton = null;
 window.actualMarker = null;
 window.lineToTarget = null;
 
 map.on('click', function(e) {
-  if (window.currentMarker) {
-    map.removeLayer(window.currentMarker);
-    if (window.confirmButton) {
-      map.getContainer().removeChild(window.confirmButton);
-      window.confirmButton = null;
-    }
-  }
+  if (window.currentMarker) map.removeLayer(window.currentMarker);
 
   window.currentMarker = L.marker(e.latlng).addTo(map).bindPopup("Selected point").openPopup();
+  confirmBtn.style.display = 'inline-block';
 
-  // Create confirm button
-  window.confirmButton = document.createElement('button');
-  window.confirmButton.innerText = 'Confirm Point';
-  window.confirmButton.className = 'confirm-button';
-  window.confirmButton.style.position = 'absolute';
-  window.confirmButton.style.top = '10px';
-  window.confirmButton.style.left = '50%';
-  window.confirmButton.style.transform = 'translateX(-50%)';
-  window.confirmButton.style.zIndex = 1000;
-  map.getContainer().appendChild(window.confirmButton);
-
-  window.confirmButton.onclick = function() {
+  confirmBtn.onclick = function() {
     const d = window.distanceMeters(e.latlng.lat, e.latlng.lng, window.targetLat, window.targetLng);
     const score = window.getScore(d);
     window.totalScore += score;
 
-    // Show actual location and line
     if (window.actualMarker) map.removeLayer(window.actualMarker);
     if (window.lineToTarget) map.removeLayer(window.lineToTarget);
 
@@ -96,11 +70,8 @@ map.on('click', function(e) {
     window.lineToTarget = L.polyline([e.latlng, [window.targetLat, window.targetLng]], { color: '#003262' })
       .addTo(map);
 
-    // Remove confirm button
-    map.getContainer().removeChild(window.confirmButton);
-    window.confirmButton = null;
+    confirmBtn.style.display = 'none';
 
-    // Show score info
     document.getElementById("score-display").innerText =
       `Round ${window.round} Score: ${score} | Total: ${window.totalScore}`;
 
@@ -113,9 +84,7 @@ map.on('click', function(e) {
   };
 });
 
-// -------------------------
 // Google Street View
-// -------------------------
 window.initStreetView = function() {
   window.pano = new google.maps.StreetViewPanorama(
     document.getElementById("street-view"),
@@ -147,9 +116,7 @@ window.loadStreetView = function() {
   });
 };
 
-// -------------------------
-// Next Round
-// -------------------------
+// Next Round Logic
 window.startNextRound = function() {
   window.round++;
   window.setNewTarget();
@@ -158,14 +125,14 @@ window.startNextRound = function() {
   if (window.actualMarker) { map.removeLayer(window.actualMarker); window.actualMarker = null; }
   if (window.lineToTarget) { map.removeLayer(window.lineToTarget); window.lineToTarget = null; }
 
+  confirmBtn.style.display = 'none';
   document.getElementById("next-round-btn").style.display = 'none';
   window.loadStreetView();
   document.getElementById("score-display").innerText = `Round ${window.round} Score: 0 | Total: ${window.totalScore}`;
 };
 
-// -------------------------
-// Load Google Maps API securely
-// -------------------------
+
+// Load Google Maps API securely (via endpoint)
 document.addEventListener("DOMContentLoaded", () => {
   fetch('/api/maps-key')
     .then(res => res.json())
