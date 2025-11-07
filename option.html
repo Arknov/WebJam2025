@@ -2,75 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Option</title>
-   <audio id="bgAudio" src="your-audio.mp3" loop></audio>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Options</title>
+
+  <link rel="stylesheet" href="option.css">
+
+  <!-- Shared Audio Script -->
+  <script defer src="audio.js"></script>
 </head>
 <body>
 
-  <h2>Options</h2>
-  <div class="option-box">
-   <br/>
-    <label for="volumeControl">Volume:</label>
-    <input id="volumeControl" type="range" min="0" max="1" step="0.01">
+  <div class="options-container">
+    <h1>Options</h1>
 
+    <div class="option-box">
+      <label for="volumeControl">Volume:</label>
+      <input id="volumeControl" type="range" min="0" max="1" step="0.01">
+    </div>
   </div>
+
   <script>
-     const audio = document.getElementById('bgAudio');
     const volumeSlider = document.getElementById('volumeControl');
-  
+    const audio = window.bgAudio;
+
     // Load saved volume
-    let savedVolume = localStorage.getItem('siteVolume');
-    if (savedVolume !== null) {
-      audio.volume = savedVolume;
-      volumeSlider.value = savedVolume;
-    } else {
-      audio.volume = 1;
-      volumeSlider.value = 1;
-    }
-    
-    // Play audio on first click anywhere
-    let hasStarted = false;
-    document.addEventListener('click', function() {
-      if (!hasStarted) {
-        audio.play().then(() => {
-          hasStarted = true;
-        }).catch(e => console.log('Autoplay prevented:', e));
-      }
-    });
-    
-    // Update volume when slider moves
-    volumeSlider.addEventListener('input', function() {
-      audio.volume = this.value;
-      localStorage.setItem('siteVolume', this.value);
-    });
-   
-  </script>
-  <!--add something allow multiple pages share volummn change other pages need to include  
- add this thing in  header
-    <audio id="bgAudio" src="your-audio.mp3" loop></audio>
-   <script>
-    const audio = document.getElementById('bgAudio');
-    
-    // Load saved volume from option page
     const savedVolume = localStorage.getItem('siteVolume');
     if (savedVolume !== null) {
-      audio.volume = parseFloat(savedVolume);
+        volumeSlider.value = savedVolume;
+        if(audio) audio.volume = parseFloat(savedVolume);
     } else {
-      audio.volume = 1;
+        volumeSlider.value = 1;
+        if(audio) audio.volume = 1;
     }
-    
-    // Auto-play on first click
-    let hasStarted = false;
-    document.addEventListener('click', function() {
-      if (!hasStarted) {
-        audio.play().catch(e => console.log('Autoplay prevented:', e));
-        hasStarted = true;
-      }
+
+    // Update volume dynamically
+    volumeSlider.addEventListener('input', () => {
+        if(audio) audio.volume = volumeSlider.value;
+        localStorage.setItem('siteVolume', volumeSlider.value);
     });
   </script>
-  
-but if you have some other fancy thing that is eaiser to do you can use other method
-  -->
 
 </body>
 </html>
