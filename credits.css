@@ -1,0 +1,7 @@
+body {
+        background-image: url("images/Blue\ White\ Aesthetic\ Modern\ Starting\ Soon\ Twitch\ Screen\ .png");
+        background-size: cover;         /* make it fill the page */
+        background-repeat: no-repeat;   /* prevent it from tiling */
+        background-position: center;    /* keep it centered */
+        background-attachment: fixed;   /* optional: makes it stay still on scroll */
+     }
