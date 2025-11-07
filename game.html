@@ -16,11 +16,13 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="game.css">
-   <audio id="bgAudio" src="your-audio.mp3" loop></audio>
+
+  <!-- Audio -->
+     <audio id="bgAudio" src="your-audio.mp3" loop></audio>
    <script>
     const audio = document.getElementById('bgAudio');
     
-   <!--Audio-->
+    // Load saved volume from option page
     const savedVolume = localStorage.getItem('siteVolume');
     if (savedVolume !== null) {
       audio.volume = parseFloat(savedVolume);
@@ -37,6 +39,7 @@
       }
     });
   </script>
+
 </head>
 <body>
   <div id="top-container">
