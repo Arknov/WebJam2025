@@ -30,6 +30,7 @@ h2 {
 
 h2:hover {
   transform: scale(1.1);
+    background-color: #1c62ac;
 }
 
 h3 {
@@ -40,6 +41,7 @@ h3 {
 
 h3:hover {
   transform: scale(1.1);
+  background-color: #1c62ac;
 }
 
 a {
