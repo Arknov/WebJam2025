@@ -9,7 +9,7 @@ body {
 h1 {
     color: white;
     text-align: center;
-    margin-top: 370px;
+    margin-top: 30%;
     font-size: 175px;
     font-style: italic;
     font-weight: 1000;
@@ -20,7 +20,7 @@ h2 {
     color: white;
     text-align: center;
     font-size: 70px;
-    margin-top: 165px;
+    margin-top: 5%;
 
 }
 
@@ -38,6 +38,7 @@ a {
 
 .sticker {
     position: fixed;
+    top: 60%;
     bottom: 0%;
     left: 60%;
     width: 700px;
