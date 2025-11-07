@@ -1,7 +1,54 @@
 body {
-        background-image: url("images/Blue\ White\ Aesthetic\ Modern\ Starting\ Soon\ Twitch\ Screen\ .png");
-        background-size: cover;         /* make it fill the page */
-        background-repeat: no-repeat;   /* prevent it from tiling */
-        background-position: center;    /* keep it centered */
-        background-attachment: fixed;   /* optional: makes it stay still on scroll */
-     }
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5faff;
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    color: #003262; /* UCI blue */
+}
+
+.content {
+    text-align: center;
+    padding: 30px 40px;
+    border-radius: 12px;
+    background-color: #ffffff;
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #FDB515; /* UCI gold */
+}
+
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+li {
+    margin: 12px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #003262;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #FDB515;
+    transition: 0.2s ease;
+}
