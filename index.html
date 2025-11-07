@@ -3,40 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-     
-    <audio id="bgAudio" src="your-audio.mp3" loop></audio>
-   <script>
-    const audio = document.getElementById('bgAudio');
-    
-    // Load saved volume from option page
-    const savedVolume = localStorage.getItem('siteVolume');
-    if (savedVolume !== null) {
-      audio.volume = parseFloat(savedVolume);
-    } else {
-      audio.volume = 1;
-    }
-    
-    // Auto-play on first click
-    let hasStarted = false;
-    document.addEventListener('click', function() {
-      if (!hasStarted) {
-        audio.play().catch(e => console.log('Autoplay prevented:', e));
-        hasStarted = true;
-      }
-    });
-  </script>
+    <title>ZotGuesser</title>
 
+    <link rel="stylesheet" href="index.css">
+    <script defer src="audio.js"></script>
 </head>
 <body>
-    <!-- Your content goes here  wew blah blah--->
+
 <div class="menu">
-  <h1>ZOTGUESSER</h1>
-  <h2><a href="game.html" style="color: white">PLAY</a></h2>
-  <h3><a href="option.html" style="color: white">OPTIONS</a></h3>
-  <h3><a href="credits.html" style="color: white">CREDITS</a></h3>
+    <h1>ZOTGUESSER</h1>
+
+    <div class="button-row">
+        <a class="small-btn" href="credits.html">CREDITS</a>
+        <a class="play-btn" href="game.html">PLAY</a>
+        <a class="small-btn" href="option.html">OPTIONS</a>
+    </div>
 </div>
-  <img src="images/petr-removebg-preview.png" alt="petr sticker" class="sticker">
+
+
+<img src="images/petr-removebg-preview.png" alt="Petr Sticker" class="sticker">
+
 </body>
 </html>

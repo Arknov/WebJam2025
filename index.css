@@ -1,69 +1,103 @@
+:root {
+    --uci-blue: #003262;
+    --uci-gold: #FDB515;
+}
 
 body {
-        background-image: url("images/werw.gif");
-        background-size: cover;         /* make it fill the page */
-        background-repeat: no-repeat;   /* prevent it from tiling */
-        background-position: center;    /* keep it centered */
-        background-attachment: fixed;   /* optional: makes it stay still on scroll */
-     }
-h1 {
+    background-image: url("images/werw.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
     color: white;
+}
+
+h1 {
+    color: var(--uci-gold);
     text-align: center;
-    margin-top: 30%;
-    font-size: 175px;
+    margin: 0;
+    font-size: 160px;
     font-style: italic;
-    font-weight: 1000;
-}   
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
 
 h1:hover {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
+.button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;           
+    margin-top: 50px;
+}
 
-h2 {
-    color: white;
+.small-btn {
+    background: var(--uci-blue);
+    color: var(--uci-gold);
+    border: 2px solid var(--uci-gold);
+    padding: 18px 30px;
+    border-radius: 14px;
+    font-size: 28px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
     text-align: center;
-    font-size: 70px;
-    margin-top: 5%;
-
 }
 
-h2:hover {
-  transform: scale(1.1);
-    background-color: #1c62ac;
+.small-btn:hover {
+    transform: scale(1.12);
+    background: var(--uci-gold);
+    color: var(--uci-blue);
 }
 
-h3 {
-    color: white;
+.play-btn {
+    background: var(--uci-gold);
+    color: var(--uci-blue);
+    padding: 28px 80px;
+    border-radius: 18px;
+    font-size: 60px;
+    font-weight: 800;
+    border: 4px solid var(--uci-blue);
+    text-decoration: none;
+    transition: 0.2s ease;
     text-align: center;
-    font-size: 30px;
 }
 
-h3:hover {
-  transform: scale(1.1);
-  background-color: #1c62ac;
+.play-btn:hover {
+    transform: scale(1.08);
+    background: var(--uci-blue);
+    color: var(--uci-gold);
 }
 
 a {
     text-decoration: none;
 }
 
+
 .sticker {
     position: fixed;
-    top: 60%;
-    bottom: 0%;
-    left: 60%;
-    width: 700px;
+    bottom: 5%;
+    right: 5%;
+    width: 500px;
+    transition: transform 0.3s ease;
 }
 
 .sticker:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .menu {
-    position: fixed;  
-    top: 30%;   
-    left: 50%;   
-    transform: translate(-50%, -50%); 
+    position: fixed;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -30%);
     text-align: center;
 }
