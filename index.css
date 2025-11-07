@@ -94,10 +94,21 @@ a {
     transform: scale(1.1);
 }
 
+
 .menu {
     position: fixed;
     top: 32%;
     left: 50%;
     transform: translate(-50%, -30%);
     text-align: center;
+    z-index: 10;    
+}
+
+.sticker {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    width: 500px;
+    transition: transform 0.3s ease;
+    z-index: 1;  
 }
