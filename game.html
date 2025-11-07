@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,36 +13,17 @@
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-  <!-- Custom CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="game.css">
-
-  <!-- Audio -->
-     <audio id="bgAudio" src="your-audio.mp3" loop></audio>
-   <script>
-    const audio = document.getElementById('bgAudio');
-    
-    // Load saved volume from option page
-    const savedVolume = localStorage.getItem('siteVolume');
-    if (savedVolume !== null) {
-      audio.volume = parseFloat(savedVolume);
-    } else {
-      audio.volume = 1;
-    }
-    
-    // Auto-play on first click
-    let hasStarted = false;
-    document.addEventListener('click', function() {
-      if (!hasStarted) {
-        audio.play().catch(e => console.log('Autoplay prevented:', e));
-        hasStarted = true;
-      }
-    });
-  </script>
+  <script defer src="audio.js"></script>
 
 </head>
+
 <body>
+
+
   <div id="top-container">
     <div id="map-container">
       <div id="map"></div>
@@ -61,5 +43,14 @@
 
   <!-- Game JS -->
   <script src="index.js"></script>
+  <script>function myFunction() {
+  window.location.href = "index.html";
+
+
+}</script>
+<div class="top-button-wrapper">
+    <button onclick="myFunction()">Home</button>
+</div>
 </body>
+
 </html>

@@ -52,3 +52,28 @@ a:hover {
     color: #FDB515;
     transition: 0.2s ease;
 }
+.top-button-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.top-button-wrapper button {
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    background: var(--uci-blue);
+    border: 2px solid var(--uci-gold);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.top-button-wrapper button:hover {
+    background: var(--uci-gold);
+    color: var(--uci-blue);
+    transform: scale(1.05);
+}
