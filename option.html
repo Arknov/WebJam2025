@@ -21,26 +21,43 @@
     </div>
   </div>
 
-  <script>
+ <script>
     const volumeSlider = document.getElementById('volumeControl');
-    const audio = window.bgAudio;
 
-    // Load saved volume
-    const savedVolume = localStorage.getItem('siteVolume');
-    if (savedVolume !== null) {
-        volumeSlider.value = savedVolume;
-        if(audio) audio.volume = parseFloat(savedVolume);
-    } else {
-        volumeSlider.value = 1;
-        if(audio) audio.volume = 1;
+    // Wait for audio to be available
+    function initVolumeControl() {
+        const audio = window.bgAudio;
+        
+        if (!audio) {
+            console.error('Background audio not found');
+            return;
+        }
+
+        // Load saved volume
+        const savedVolume = localStorage.getItem('siteVolume');
+        if (savedVolume !== null) {
+            volumeSlider.value = savedVolume;
+            audio.volume = parseFloat(savedVolume);
+        } else {
+            volumeSlider.value = 1;
+            audio.volume = 1;
+        }
+
+        // Update volume
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value;
+            localStorage.setItem('siteVolume', volumeSlider.value);
+        });
     }
 
-    // Update volume dynamically
-    volumeSlider.addEventListener('input', () => {
-        if(audio) audio.volume = volumeSlider.value;
-        localStorage.setItem('siteVolume', volumeSlider.value);
-    });
-  </script>
+    // Initialize when audio is ready
+    if (window.bgAudio) {
+        initVolumeControl();
+    } else {
+        window.addEventListener('load', initVolumeControl);
+    }
+</script>
+
 
 </body>
 </html>
