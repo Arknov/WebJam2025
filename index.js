@@ -1,3 +1,13 @@
+fetch('/api/maps-key')
+  .then(res => res.json())
+  .then(data => {
+    console.log("API key from serverless endpoint:", data.key); // check in console
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${data.key}&callback=initStreetView`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  });
 
 window.UCI_BOUNDS = {
   north: 33.6535,
