@@ -1,6 +1,6 @@
 
 body {
-        background-image: url("images/Blue\ White\ Aesthetic\ Modern\ Starting\ Soon\ Twitch\ Screen\ .gif");
+        background-image: url("images/werw.gif");
         background-size: cover;         /* make it fill the page */
         background-repeat: no-repeat;   /* prevent it from tiling */
         background-position: center;    /* keep it centered */
@@ -9,11 +9,10 @@ body {
 h1 {
     color: white;
     text-align: center;
-    height: 250px;
-    line-height: 350px;
-    font-size: 100px;
+    margin-top: 370px;
+    font-size: 175px;
     font-style: italic;
-    font-weight: 700;
+    font-weight: 1000;
 }   
 
 
@@ -21,13 +20,15 @@ h2 {
     color: white;
     text-align: center;
     font-size: 70px;
-    margin-top: 550px;
+    margin-top: 165px;
+
 }
 
 h3 {
     color: white;
     text-align: center;
     font-size: 30px;
+    
 
 }
 
@@ -37,8 +38,16 @@ a {
 
 .sticker {
     position: fixed;
-    bottom: -20;
+    bottom: 0%;
     left: 60%;
     width: 700px;
 
+}
+
+.menu {
+    position: fixed;  
+    top: 30%;   
+    left: 50%;   
+    transform: translate(-50%, -50%); 
+    text-align: center;
 }
