@@ -1,4 +1,4 @@
-# ZotGuesser - A GeoPositioning Game on the UC Irvine Campus
+# ZotGuesser - A GeoPositioning Game on the UC Irvine Campus, Winner for Best Game Category!
 
 ## Credits
 - Google Maps API  
